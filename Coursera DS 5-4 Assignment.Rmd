@@ -1,0 +1,65 @@
+---
+title: An investigation on public health and economic effects of extreme weather conditions in the USA
+
+author: "Rona1d"
+date: "9 mei 2016"
+output: html_document
+---
+
+### Synopsis
+
+
+*This report was written in fullfillment of the first assignment of week 4 of the 'Reproducible Research' course within the Coursera specialization track 'Data Science'. The analysis shows that xxx has the most effect on public health with on average xxx fatalities and xxx injuries per year. xxx has the greatest economic consquences with xxx Dollars of property damage and xxx Dollars of crop damage on average each year.*
+
+### Introduction
+
+Storms and other severe weather events can cause both public health and economic problems for communities and municipalities. Many severe events can result in fatalities, injuries, and property damage, and preventing such outcomes to the extent possible is a key concern.
+
+This project involves exploring the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database. This database tracks characteristics of major storms and weather events in the United States, including when and where they occur, as well as estimates of any fatalities, injuries, and property damage.
+
+### Data processing
+
+To start of the research we first need to download the available data. This dataset was made available through the Coursera website.
+
+```{r}
+
+# First, make sure a folder named 'data' exists
+
+if(!file.exists("data")) {
+        dir.create("data")
+}
+setwd("./data")
+
+# Downloading file...
+
+temp <- tempfile()
+fileURL <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+setInternet2(use = TRUE)
+download.file(fileURL, "./StormData.csv.bz2")
+data <- read.csv("StormData.csv.bz2", nrows=2)
+
+```
+
+This dataset contains `r nrow(data)` rows and `r ncol(data)` columns. This is what the first few columns of the dataset look like:
+
+```{r}
+head(data)
+```
+
+For detailed information about the dataset, please access the following documentation. With this, you will find how some of the variables are constructed/defined:
+
+* National Weather Service [Storm Data Documentation](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf)
+* National Climatic Data Center [Storm Events FAQ](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf)
+
+For this investigation, not all of the variables in the dataset will be needed. In this analysis we will focus mainly on Event type, fatalities, injuries, property and crop damage. The analysis will continue with this reduced dataset:
+
+```{r}
+
+data2 <- data[,c(8, 23, 24, 25, 27)]
+summary(data2)
+
+```
+
+### Results
+
+
