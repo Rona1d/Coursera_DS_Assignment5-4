@@ -1,9 +1,13 @@
 ---
-title: An investigation on public health and economic effects of extreme weather conditions in the USA
+title: "An investigation on public health and economic effects of extreme weather conditions in the USA"
 
 author: "Rona1d"
 date: "may 9, 2016"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
+
+
 ---
 
 ### Synopsis
